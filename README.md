@@ -1,5 +1,8 @@
 # Simple Frontend Boilerplate
 
+I use this tools to prepare my Twig views on larger project. 
+I still must add compilation tools and folder structure for JS and CSS. 
+
 ## The App
 
 Use Docker to point the `public` folder or start internal PHP server :
