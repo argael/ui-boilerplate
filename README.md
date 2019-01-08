@@ -7,7 +7,7 @@ I still must add compilation tools and folder structure for JS and CSS.
 
 Use Docker to point the `public` folder or start internal PHP server :
 
-    php -s 0.0.0.0:8080 -t public/
+    php -S 0.0.0.0:8080 -t public/
 
 ## `src` folder
 
