@@ -1,0 +1,24 @@
+# OSX
+.DS_Store
+
+# VIM
+tags
+*.swp
+
+# TEXTMATE
+*.tmproj
+tmtags
+
+# EMACS
+*~
+\#*
+.\#*
+
+# PHPSTORM
+.idea/
+
+#GIT
+!.gitkeep
+
+# Composer
+vendor
