@@ -7,6 +7,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 class App extends \Slim\App
 {
+    const DEFAULT_CSS = '/assets/css/main.css';
+
     /**
      * App constructor.
      *
@@ -52,10 +54,13 @@ class App extends \Slim\App
                     $templates[$baseName] = $baseName;
                 }
             }
-
             ksort($templates);
 
-            return $this->view->render($response, 'allpages.twig', ['templates' => $templates]);
+            $cssUrl = file_exists($this->basePath . '/public' . App::DEFAULT_CSS)
+                ? App::DEFAULT_CSS
+                : false;
+
+            return $this->view->render($response, 'app_pages.twig', ['templates' => $templates, 'css_url' => $cssUrl]);
         })->setName('templates.list');
 
         return $this;
