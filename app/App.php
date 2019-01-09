@@ -51,7 +51,11 @@ class App extends \Slim\App
             foreach(new DirectoryIterator($this->basePath . '/src/views/') as $fileInfo) {
                 if ($fileInfo->isFile() && strtolower($fileInfo->getExtension()) === 'twig') {
                     $baseName = $fileInfo->getBasename('.twig');
-                    $templates[$baseName] = $baseName;
+
+                    $templates[$baseName] = [
+                        'name' => $baseName,
+                        'has_data' => file_exists($this->basePath . '/src/data/' . $baseName . '.php'),
+                    ];
                 }
             }
             ksort($templates);
@@ -80,6 +84,13 @@ class App extends \Slim\App
 
             return $this->view->render($response, $template, $data);
         })->setName('templates.view');
+
+        $this->get('/data/{template}', function(Request $request, Response $response, array $args) {
+            $data = $this->basePath . '/src/data/' . $args['template'] . '.php';
+            $data = (file_exists($data)) ? require $data : [];
+
+            return $response->withJson($data);
+        })->setName('templates.data');
 
         return $this;
     }

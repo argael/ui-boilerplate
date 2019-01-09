@@ -17,15 +17,38 @@
   <div class="container">
     <div class="content">
       <h1 class="title">All pages</h1>
-      <p>List all available templates from <strong>src/views</strong> folder.</p>
-      <div class="buttons are-large">
-        {% for template in templates %}
-          <a class="button is-dark is-rounded"
-             href="{{ path_for('templates.view', {'template': template}) }}">
-            <span class="icon is-small"><i class="fas fa-bookmark"></i></span>
-            <span>{{ template|capitalize }}</span>
-          </a>
-        {% endfor %}
+      <p class="subtitle">List all available templates from <strong>src/views</strong> folder.</p>
+
+      <div class="columns is-mobile">
+      {% for template in templates %}
+        <div class="column">
+          {% set template_button %}
+            <a class="button is-medium is-link is-rounded" href="{{ path_for('templates.view', {'template': template.name}) }}">
+              <span class="icon is-small"><i class="fas fa-file"></i></span>
+              <span>{{ template.name|capitalize }}</span>
+            </a>
+          {% endset %}
+
+          {% if template.has_data %}
+            <div class="field has-addons">
+
+              <span class="control">{{ template_button }}</span>
+              <span class="control">
+                <a class="button is-medium is-light is-rounded tooltip is-tooltip-bottom"
+                   href="{{ path_for('templates.data', {'template': template.name}) }}"
+                   data-tooltip="Template Data, only!">
+                  <span class="icon is-small"><i class="fas fa-code"></i></span>
+                </a>
+              </span>
+            </div>
+
+          {% else %}
+            <div class="field">
+              {{ template_button }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
       </div>
     </div>
   </div>
