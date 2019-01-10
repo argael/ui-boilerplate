@@ -1,0 +1,16 @@
+{
+  "name": "ui-boilerplate",
+  "version": "0.0.1",
+  "description": "Simple UI Boilerplate",
+  "author": "Argael <argael@passtech.be>",
+  "license": "MIT",
+  "main": "src/sass/main.scss",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  },
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url src/sass/main.scss public/assets/css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  }
+}
