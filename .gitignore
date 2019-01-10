@@ -20,5 +20,7 @@ tmtags
 #GIT
 !.gitkeep
 
-# Composer
-vendor
+# Packages & Compiled
+/vendor
+/node_modules
+/public/assets
