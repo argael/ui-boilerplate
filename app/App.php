@@ -60,10 +60,6 @@ class App extends \Slim\App
             }
             ksort($templates);
 
-            $cssUrl = file_exists($this->basePath . '/public' . App::DEFAULT_CSS)
-                ? App::DEFAULT_CSS
-                : false;
-
             return $this->view->render($response, 'app_pages.twig', ['templates' => $templates, 'css_url' => $cssUrl]);
         })->setName('templates.list');
 

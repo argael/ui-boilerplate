@@ -3,14 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Bulma!</title>
-  {% if css_url %}
-    <link rel="stylesheet" href="{{ css_url }}">
-  {% else %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lux/bulmaswatch.min.css">
-  {% endif %}
-  <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"></script>
+  <title>Passtech UI Boilerplate - List of all templates!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bulmaswatch@0.7.2/spacelab/bulmaswatch.min.css">
 </head>
 <body>
 <section class="section">
@@ -23,21 +19,19 @@
       {% for template in templates %}
         <div class="column">
           {% set template_button %}
-            <a class="button is-medium is-link is-rounded" href="{{ path_for('templates.view', {'template': template.name}) }}">
-              <span class="icon is-small"><i class="fas fa-file"></i></span>
+            <a class="button is-medium is-primary is-rounded" href="{{ path_for('templates.view', {'template': template.name}) }}">
+              <span class="icon is-small"><i class="fa fa-file"></i></span>
               <span>{{ template.name|capitalize }}</span>
             </a>
           {% endset %}
 
           {% if template.has_data %}
             <div class="field has-addons">
-
               <span class="control">{{ template_button }}</span>
               <span class="control">
-                <a class="button is-medium is-light is-rounded tooltip is-tooltip-bottom"
-                   href="{{ path_for('templates.data', {'template': template.name}) }}"
-                   data-tooltip="Template Data, only!">
-                  <span class="icon is-small"><i class="fas fa-code"></i></span>
+                <a class="button is-medium is-light is-rounded"
+                   href="{{ path_for('templates.data', {'template': template.name}) }}">
+                  <span class="icon is-small"><i class="fa fa-code"></i></span>
                 </a>
               </span>
             </div>
